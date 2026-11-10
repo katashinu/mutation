@@ -1,11 +1,30 @@
-
 import random
 import statistics
 from Bio.Seq import Seq
 import matplotlib.pyplot as plt
 
-AMINO_ACIDS = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L',
-               'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
+AMINO_ACIDS = [
+    "A",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "K",
+    "L",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "V",
+    "W",
+    "Y",
+]
 
 
 def mutate_position(sequence, position):
@@ -75,15 +94,15 @@ def run_mutations(sequence, iterations=10000):
 if __name__ == "__main__":
 
     original_seq = Seq(
-    "PAGFRQVCKAFMAEPMFNTATQHEYHCCTPTRMYINTPVNRAFGCFDGPIIFGWPPEREIYPNQTS"
-    "FAHGFWVHQIWLGFNGNVIFYMCADPSKCIYMYVARQMGPDKLYVGMEWVGPPESMSMAHAWVTHC"
-    "VWCLCSSDLMGVKFMRFHYPKMDFHNFFCPFWVCFQFDWNLSTECKKLRQYCKHVFEKKGFWKVNC"
-    "YTYWTELFKCIYGSLKYYNREGYNMRCNMVEYCENQFDVFNPKNMWFRFIQGHSCLYYCFGWVVIE"
-    "TRPYQATGQWDDDNGPRFPGLWTCKGASPGRNKACVWMTNDDHVSVVFFDSVKPEWVYTVARHWTV"
-    "TGSDVVFTLHSFAEHVYGPIYMWDYEYGDKRHPMINGRAWMRRQICQHHTRHHKKGDKWQWPHMAG"
-    "KNQLKFLWSECMPHTSQFEAFLTCKPEQLFQASSDKEYMCFTLTQYNYVPRMTMVRLGFPSMPGCG"
-    "GHMDFQRCKMKFKWNQVSIAISVYKRMPFFKAHQKELDPAINAPDLCIFHSISTGCAMYHQSQSWE"
-)
+        "PAGFRQVCKAFMAEPMFNTATQHEYHCCTPTRMYINTPVNRAFGCFDGPIIFGWPPEREIYPNQTS"
+        "FAHGFWVHQIWLGFNGNVIFYMCADPSKCIYMYVARQMGPDKLYVGMEWVGPPESMSMAHAWVTHC"
+        "VWCLCSSDLMGVKFMRFHYPKMDFHNFFCPFWVCFQFDWNLSTECKKLRQYCKHVFEKKGFWKVNC"
+        "YTYWTELFKCIYGSLKYYNREGYNMRCNMVEYCENQFDVFNPKNMWFRFIQGHSCLYYCFGWVVIE"
+        "TRPYQATGQWDDDNGPRFPGLWTCKGASPGRNKACVWMTNDDHVSVVFFDSVKPEWVYTVARHWTV"
+        "TGSDVVFTLHSFAEHVYGPIYMWDYEYGDKRHPMINGRAWMRRQICQHHTRHHKKGDKWQWPHMAG"
+        "KNQLKFLWSECMPHTSQFEAFLTCKPEQLFQASSDKEYMCFTLTQYNYVPRMTMVRLGFPSMPGCG"
+        "GHMDFQRCKMKFKWNQVSIAISVYKRMPFFKAHQKELDPAINAPDLCIFHSISTGCAMYHQSQSWE"
+    )
 
     iterations = 100000
 
@@ -111,23 +130,21 @@ if __name__ == "__main__":
 
     plt.figure(figsize=(12, 5))
 
-    plt.plot(positions, results, marker='o', markersize=3)
+    plt.plot(positions, results, marker="o", markersize=3)
 
     # Expected number of mutations per position
     expected = iterations / 100
 
     plt.axhline(
         y=expected,
-        color='red',
-        linestyle='--',
-        label=f"Expected mutations ({expected:.0f})"
+        color="red",
+        linestyle="--",
+        label=f"Expected mutations ({expected:.0f})",
     )
 
     plt.xlabel("Amino Acid Position")
     plt.ylabel("Times Mutated")
-    plt.title(
-        f"Mutation Count at Each Amino Acid Position ({iterations:,} iterations)"
-    )
+    plt.title(f"Mutation Count at Each Amino Acid Position ({iterations:,} iterations)")
 
     plt.xticks(range(1, len(original_seq) + 1, 5))
     plt.ylim(bottom=0)
